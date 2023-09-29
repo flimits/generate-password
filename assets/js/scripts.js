@@ -1,11 +1,13 @@
 // Let's play a gave of Rock, Paper and Scissors
 
-var numbers = [0123456789];
+var numbers = "0123456789";
 var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
 var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
 var searchList = "";
-var thePasswordIs = "";
+var password = "";
+var userResponse = "";
+var userResp = "";
 
 // // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
@@ -24,21 +26,17 @@ var thePasswordIs = "";
 
 function getUserResponse() {
 
-   var userResp = prompt("What is the size of the password you wish to create?\nIt must be between 8 and 128 characters in length:");
-   // responseResult = userResp.toLowerCase();
-   console.log("You entered " + userResp);
+   userResp = prompt("What is the size of the password you wish to create?\nIt must be between 8 and 128 characters in length:");
 
    if (userResp >= 8 && userResp <= 128) {
-      console.log(userResp + " is an ok size of password");
-      return userResp;
+      userResponse = userResp;
    } else {
       alert("You entered " + userResp + ". The password length should\nbe between 8 and 128 characters in lengh.\nPlease try again");
       getUserResponse();
    }
 }
 
-var userResponse = getUserResponse();
-console.log("the user response to how many characters the password is " + userResponse)
+getUserResponse();
 
 // This funcction will ask the four questions to see if you want things like special characters or uppercase letters in Password
 function askFourQuestions() {
@@ -63,34 +61,34 @@ function askFourQuestions() {
       searchList = searchList.concat(numbers);
    }
 
-console.log("The total lenght of searchList is " + searchList.length)
-
 }
 
 askFourQuestions();
 
-console.log("Is the search list still valid: " + searchList)
 function generateRandom(valueToUse) {
       var newValue = Math.floor(Math.random() * valueToUse);
-      console.log("newvalue is " + newValue)
       return newValue;
 }
 
 function getUpperCase(){
 var getBack = generateRandom(searchList.length);
 var upperCaseValue = searchList[getBack];
-console.log("The character pulled is: " + upperCaseValue)
+// console.log("The character pulled is: " + upperCaseValue)
 return upperCaseValue;
 }
 
-for (let i = 0; i < userResponse; i++) {
+function gatherPassword(){}
+for (let i = 0; i < userResp; i++) {
 var myUcValue = getUpperCase();
-thePasswordIs = thePasswordIs.concat(myUcValue);
-   console.log("The Password Is Value " + thePasswordIs);
+password = password.concat(myUcValue);
+   console.log("The Password Is Value " + password);
  }
 
+ gatherPassword();
 
-
+// generatePassword(){
+   
+// }
 
 
 // // // Assignment Code
