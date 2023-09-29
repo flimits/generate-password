@@ -1,15 +1,13 @@
 // Let's play a gave of Rock, Paper and Scissors
 
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var numbers = [0123456789];
 var upperCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
 var specialCharacters = " !\"#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-var storeResponses = "";
-// var upperCase = false;
-// var lowerCase = false;
-// var specialCase = false;
-// var numberChoice = false;
-// // Assignment Code
+var searchList = "";
+var thePasswordIs = "";
+
+// // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
 
 // // Write password to the #password input
@@ -32,38 +30,96 @@ function getUserResponse() {
 
    if (userResp >= 8 && userResp <= 128) {
       console.log(userResp + " is an ok size of password");
+      return userResp;
    } else {
       alert("You entered " + userResp + ". The password length should\nbe between 8 and 128 characters in lengh.\nPlease try again");
       getUserResponse();
    }
 }
 
-// getUserResponse();
+var userResponse = getUserResponse();
+console.log("the user response to how many characters the password is " + userResponse)
 
 function askFourQuestions() {
 
 
-   let upperCase = confirm("Do you want UPPER case letters in your password?");
+   let upperCaseResponse = confirm("Do you want UPPER case letters in your password?");
+   if (upperCaseResponse) {
+   searchList = searchList.concat(upperCaseLetters);
+   console.log("The outoput is" + searchList);
+
+   }
    // var upperCase = uC.toLocaleLowerCase();
-   console.log(upperCase);
+   // console.log(upperCase);
    let lowerCase = confirm("Do you want lower case letters in your password?");
-   // var lowerCase = lC.toLocaleLowerCase();
-   console.log(lowerCase);
-   let specialCase = confirm("Do you want special characters in you password?");
-   // var specialCase = sC.toLocaleLowerCase();
-   console.log(specialCase);
-   let numberChoice = confirm("Do you want numbers in your password?");
-   // var numberChoice = nC.toLocaleLowerCase();
-   console.log(numberChoice)
+   if (lowerCase) {
+      searchList = searchList.concat(lowerCaseLetters);
+      console.log("The outoput is" + searchList);
+
+   }
+   // // var lowerCase = lC.toLocaleLowerCase();
+   // console.log(lowerCase);
+   // let specialCase = confirm("Do you want special characters in you password?");
+   // // var specialCase = sC.toLocaleLowerCase();
+   // console.log(specialCase);
+   // let numberChoice = confirm("Do you want numbers in your password?");
+   // // var numberChoice = nC.toLocaleLowerCase();
+   // console.log(numberChoice)
 
 
 }
 
 askFourQuestions();
 
-function generateUpperCase() {
-   
+function generateRandom(valueToUse) {
+      var newValue = Math.floor(Math.random() * valueToUse);
+      // console.log("newvalue is " + newValue)
+      return newValue;
 }
+
+function getUpperCase(){
+var getBack = generateRandom(upperCaseLetters.length);
+var upperCaseValue = upperCaseLetters[getBack];
+// console.log(upperCaseValue)
+return upperCaseValue;
+}
+
+for (let i = 0; i < userResponse; i++) {
+var myUcValue = getUpperCase();
+thePasswordIs.push(myUcValue);
+   // console.log("the userresponse is " + userResponse);
+   console.log("The uppercase value is " + myUcValue);
+   console.log("The Password Is Value " + thePasswordIs);
+ }
+
+// removing character 'e'
+var newStr = thePasswordIs.toString();
+var password = newStr.replace(/,/g,'');
+console.log("the new string for passwords is " + newStr);
+console.log("the cleaned up version string for passwords is " + password);
+
+
+
+
+// // // Assignment Code
+// var generateBtn = document.querySelector("#generate");
+
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
+
+//   passwordText.value = password;
+
+// }
+
+// // Add event listener to generate button
+// generateBtn.addEventListener("click", writePassword);
+
+
+
+
+
 
 // Required to have minimum 8 characters. WE can ask for at least that and if they provide 7, just make it default to 8
 // ask about uppercase
