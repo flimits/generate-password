@@ -40,63 +40,55 @@ function getUserResponse() {
 var userResponse = getUserResponse();
 console.log("the user response to how many characters the password is " + userResponse)
 
+// This funcction will ask the four questions to see if you want things like special characters or uppercase letters in Password
 function askFourQuestions() {
-
 
    let upperCaseResponse = confirm("Do you want UPPER case letters in your password?");
    if (upperCaseResponse) {
    searchList = searchList.concat(upperCaseLetters);
-   console.log("The outoput is" + searchList);
-
    }
-   // var upperCase = uC.toLocaleLowerCase();
-   // console.log(upperCase);
+
    let lowerCase = confirm("Do you want lower case letters in your password?");
    if (lowerCase) {
       searchList = searchList.concat(lowerCaseLetters);
-      console.log("The outoput is" + searchList);
-
    }
-   // // var lowerCase = lC.toLocaleLowerCase();
-   // console.log(lowerCase);
-   // let specialCase = confirm("Do you want special characters in you password?");
-   // // var specialCase = sC.toLocaleLowerCase();
-   // console.log(specialCase);
-   // let numberChoice = confirm("Do you want numbers in your password?");
-   // // var numberChoice = nC.toLocaleLowerCase();
-   // console.log(numberChoice)
 
+   let specialCase = confirm("Do you want special characters in you password?");
+   if (specialCase) {
+      searchList = searchList.concat(specialCharacters);
+   }
+
+   let numberChoice = confirm("Do you want numbers in your password?");
+   if (numberChoice) {
+      searchList = searchList.concat(numbers);
+   }
+
+console.log("The total lenght of searchList is " + searchList.length)
 
 }
 
 askFourQuestions();
 
+console.log("Is the search list still valid: " + searchList)
 function generateRandom(valueToUse) {
       var newValue = Math.floor(Math.random() * valueToUse);
-      // console.log("newvalue is " + newValue)
+      console.log("newvalue is " + newValue)
       return newValue;
 }
 
 function getUpperCase(){
-var getBack = generateRandom(upperCaseLetters.length);
-var upperCaseValue = upperCaseLetters[getBack];
-// console.log(upperCaseValue)
+var getBack = generateRandom(searchList.length);
+var upperCaseValue = searchList[getBack];
+console.log("The character pulled is: " + upperCaseValue)
 return upperCaseValue;
 }
 
 for (let i = 0; i < userResponse; i++) {
 var myUcValue = getUpperCase();
-thePasswordIs.push(myUcValue);
-   // console.log("the userresponse is " + userResponse);
-   console.log("The uppercase value is " + myUcValue);
+thePasswordIs = thePasswordIs.concat(myUcValue);
    console.log("The Password Is Value " + thePasswordIs);
  }
 
-// removing character 'e'
-var newStr = thePasswordIs.toString();
-var password = newStr.replace(/,/g,'');
-console.log("the new string for passwords is " + newStr);
-console.log("the cleaned up version string for passwords is " + password);
 
 
 
